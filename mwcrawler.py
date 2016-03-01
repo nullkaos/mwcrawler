@@ -145,43 +145,9 @@ def malc0de(soup):
 	for row in mlc_sites:
 		decisor(row)
 
-def malwarebl(soup):
-	print "- Fetching from Malware Black List"
-	mbl=[]
-	for row in soup('description'):
-		site = str(row).split()[1].replace(',','')
-		mbl.append(site)
-	print "-- Found %s urls" % len(mbl)
-	for row in mbl:
-		decisor(row)
 
-def minotaur(soup):
-	print "- Fetching from NovCon Minotaur"
-	min=[]
-	for row in soup('td'):
-		try:
-			if re.match('http',row.string):
-				min.append(row.string)
-		except:
-			pass
-	print "-- Found %s urls" % len(min)
-	for row in min: 
-		decisor(row)
 
-def sacour(soup):
-	print "- Fetching from Sacour.cn"
-	for url in soup('a'):
-		min=[]
-		if re.match('list/',url['href']):
-			suburl = parse('http://www.sacour.cn/'+url['href'])
-			for text in suburl('body'):
-				for urls in text.contents:
-					if re.match('http://',str(urls)):
-						min.append(str(urls))
-		if len(min) > 0:
-			print "-- Found %s urls in %s" % (len(min),url['href'])
-			for row in min:
-				decisor(row)
+
 
 if __name__ == "__main__":
 	print "Malware Parser v0.4"
@@ -193,9 +159,8 @@ if __name__ == "__main__":
 		print "- Thug analysis not enabled (use -t to enable thug)"
 
 	#source list
-	minotaur(parse('http://minotauranalysis.com/malwarelist-urls.aspx'))
+
 	malwaredl(parse('http://www.malwaredomainlist.com/hostslist/mdl.xml'))
 	vxvault(parse('http://vxvault.siri-urz.net/URL_List.php'))
 	malc0de(parse('http://malc0de.com/rss'))
-	malwarebl(parse('http://www.malwareblacklist.com/mbl.xml'))
-	sacour(parse('http://www.sacour.cn/showmal.asp?month=%d&year=%d' % (now.month, now.year)))
+	
