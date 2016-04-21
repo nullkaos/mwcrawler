@@ -4,10 +4,12 @@ mwcrawler
 mwcrawler is a simple python script that parses malicious url lists from well 
 known websites (i.e. MDL, Malc0de) in order to automatically download
 the malicious code. It can be used to populate malware repositories or zoos.
+I have modified the script to remove the urls that are broken, I have left them in this readme below, but noted  "Removed as the url is broken". 
 
 Currently the script parses the following sources:
 - NovCon Minotaur:
 	http://minotauranalysis.com/malwarelist-urls.aspx
+Removed as the url is broken. 
 - Malware Domain List:
 	http://www.malwaredomainlist.com/hostslist/mdl.xml
 - VX Vault:
@@ -16,8 +18,9 @@ Currently the script parses the following sources:
 	http://malc0de.com/rss
 - Malware Black List:
 	http://www.malwareblacklist.com/mbl.xml
+Removed as the url is broken. 	
 - Sacour.cn:
-	http://www.sacour.cn
+Removed as the url is broken. 	
 
 The downloaded content is stored in /opt/malware/unsorted/ by default, so you 
 need to create this folder first, or change the source code otherwise.
